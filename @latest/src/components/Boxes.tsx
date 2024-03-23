@@ -1,7 +1,25 @@
 import { useState, type ReactElement } from 'react'
+import reactImg from '../assets/react.svg'
+import viteImg from '../../public/vite.svg'
 
 export const Boxes = (): ReactElement => {
     const [isClicked, setIsClicked] = useState(false)
+    const [plusOne, setPlusOne] = useState(0)
+
+    const handleClick = () => {
+        setPlusOne(plusOne + 1)
+    }
+
+    const sayHello = () => {
+        return function() {
+            console.log('Hello World')
+        }
+    }
+
+    const fn = sayHello()
+    const message = fn()
+
+
     return (
         <div className='grid grid-cols-3 gap-1'>
             {/* Navbar */}
@@ -53,19 +71,34 @@ export const Boxes = (): ReactElement => {
                                     </div>
                                 </div>
                             </div>
-                            <div className='bg-purple-500 h-screen xl:h-full shrink-0'>
+                            <div className='bg-purple-500 h-screen shrink-0'>
                                 <img src='https://i.postimg.cc/506s0rck/photo.png' className='h-full w-full object-cover shrink-0' />
                             </div>
                         </div>
                     </div>
-                    <div className='bg-purple-500 h-screen xl:h-full shrink-0'>
+                    <div className='bg-purple-500 h-screen shrink-0'>
                         <img src='https://i.postimg.cc/506s0rck/photo.png' className='h-full w-full object-cover shrink-0' />
                     </div>
                 </div>
             </div>
             {/* Second Section */}
-            <div className='bg-blue-500 col-span-3 h-screen'>
-
+            <div className='bg-[#242424] col-span-3 h-screen flex items-center justify-center'>
+                <div className="flex flex-col items-center gap-y-20">
+                    <div className="flex gap-x-10">
+                        <a href='https://vitejs.dev/' target='_blank' rel='noreferrer'>
+                            <img src={viteImg} alt="tailwind" className='h-20 w-20 hover:[filter:drop-shadow(0_0_2em#646cffaa)]' />
+                        </a>
+                        <a href='https://reactjs.org/' target='_blank' rel='noreferrer'>
+                            <img src={reactImg} alt="react" className='h-20 w-20 animate-spin [animation-duration:20s] hover:[filter:drop-shadow(0_0_2em#61dafbaa)]' />
+                        </a>
+                    </div>
+                    <h1 className='text-5xl text-white'>Vite + React</h1>
+                    <div className="flex flex-col gap-y-5 items-center">
+                        <button onClick={handleClick} className='bg-[#10100e] border border-[#10100e] rounded-xl text-white h-10 px-4 hover:border-[#646cff]'>{`count is ${plusOne}`}</button>
+                        <p className='text-sm flex gap-x-1 items-end text-white'>{'Edit'}<small>{'src/App.jsx'}</small>{'and save to text HMR'}</p>
+                    </div>
+                    <p className='text-gray-500'>{'Click on the Vite and React logos to learn more'}</p>
+                </div>
             </div>
         </div>
     )
