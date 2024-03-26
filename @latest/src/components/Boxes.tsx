@@ -10,16 +10,6 @@ export const Boxes = (): ReactElement => {
         setPlusOne(plusOne + 1)
     }
 
-    const sayHello = () => {
-        return function() {
-            console.log('Hello World')
-        }
-    }
-
-    const fn = sayHello()
-    const message = fn()
-
-
     return (
         <div className='grid grid-cols-3 gap-1'>
             {/* Navbar */}
